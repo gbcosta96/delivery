@@ -2,7 +2,9 @@
 import 'dart:io';
 
 import 'package:delivery/data/controllers/popular_product_controller.dart';
+import 'package:delivery/data/controllers/recommended_product_controller.dart';
 import 'package:delivery/pages/home/main_food_page.dart';
+import 'package:delivery/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,13 +31,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.find<PopularProductController>().getPopularProductList();
+    Get.find<RecommendedProductController>().getRecommendedProductList();
     return GetMaterialApp(
       title: 'Delivery',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: const MainFoodPage(),
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
     );
   }
 }

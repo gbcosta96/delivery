@@ -23,7 +23,7 @@ class _ExpandableTextState extends State<ExpandableText> {
     super.initState();
     if(widget.text.length > textHeight){
       previewText = widget.text.substring(0, textHeight.toInt());
-      extraText = widget.text.substring(textHeight.toInt() + 1, widget.text.length);
+      extraText = widget.text.substring(textHeight.toInt(), widget.text.length);
     }
     else{
       previewText = widget.text;
