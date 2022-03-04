@@ -22,7 +22,7 @@ class RecommendedProductController extends GetxController{
       update();
     }
     else{
-      print("Error: ${response.statusText}");
+      //print("Error: ${response.statusText}");
 
     }
   }

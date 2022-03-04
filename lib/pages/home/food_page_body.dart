@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:delivery/data/controllers/popular_product_controller.dart';
 import 'package:delivery/data/controllers/recommended_product_controller.dart';
 import 'package:delivery/models/products_model.dart';
-import 'package:delivery/pages/food/popular_food_detail.dart';
 import 'package:delivery/routes/route_helper.dart';
 import 'package:delivery/utils/app_constants.dart';
 import 'package:delivery/utils/colors.dart';

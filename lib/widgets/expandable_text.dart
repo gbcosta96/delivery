@@ -41,31 +41,29 @@ class _ExpandableTextState extends State<ExpandableText> {
           color: AppColors.paraColor,
           height: 2.0,
         ) :
-        Container(
-          child: Column(
-            children: [
-              SmallText(
-                text: hiddenText ? previewText + "..." : (previewText + extraText),
-                size: Dimensions.height(16),
-                color: AppColors.paraColor,
-                height: 2.0,
+        Column(
+          children: [
+            SmallText(
+              text: hiddenText ? previewText + "..." : (previewText + extraText),
+              size: Dimensions.height(16),
+              color: AppColors.paraColor,
+              height: 2.0,
+            ),
+            InkWell(
+              onTap: () {
+                setState(() {
+                  hiddenText = !hiddenText;
+                });
+              },
+              child: Row(
+                children: [
+                  SmallText(text: hiddenText ? "Show more" : "Show less",
+                  color: AppColors.mainColor),
+                  Icon(hiddenText ? Icons.arrow_drop_down : Icons.arrow_drop_up, color: AppColors.mainColor),
+                ],
               ),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    hiddenText = !hiddenText;
-                  });
-                },
-                child: Row(
-                  children: [
-                    SmallText(text: hiddenText ? "Show more" : "Show less",
-                    color: AppColors.mainColor),
-                    Icon(hiddenText ? Icons.arrow_drop_down : Icons.arrow_drop_up, color: AppColors.mainColor),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
     );
   }

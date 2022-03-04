@@ -2,7 +2,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:delivery/data/controllers/popular_product_controller.dart';
 import 'package:delivery/models/products_model.dart';
-import 'package:delivery/routes/route_helper.dart';
 import 'package:delivery/utils/app_constants.dart';
 import 'package:delivery/utils/colors.dart';
 import 'package:delivery/utils/dimensions.dart';
@@ -87,7 +86,7 @@ class PopularFoodDetail extends StatelessWidget {
                   SizedBox(height: Dimensions.height(20)),
                   Expanded(
                     child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                       child: ExpandableText(
                         text: product.description!,
                       ),
@@ -130,11 +129,11 @@ class PopularFoodDetail extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.remove, color: AppColors.signColor),
+                  const Icon(Icons.remove, color: AppColors.signColor),
                   SizedBox(width: Dimensions.width(5)),
                   BigText(text: "0"),
                   SizedBox(width: Dimensions.width(5)),
-                  Icon(Icons.add, color: AppColors.signColor),
+                  const Icon(Icons.add, color: AppColors.signColor),
                 ],
               ),
             ),
