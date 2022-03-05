@@ -35,7 +35,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     BigText(text: "Brasil", color: AppColors.mainColor),
                     Row(
                       children: [
-                        SmallText(text: "Viamão", color: Colors.black54),
+                        SmallText(text: "Florianópolis", color: Colors.black54),
                         const Icon(Icons.arrow_drop_down_rounded)
                     ],)
                     

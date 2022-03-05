@@ -194,14 +194,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     }
     return Transform(
       transform: matrix,
-      child: Stack(
-        children: [
-          CachedNetworkImage(
-            imageUrl: AppConstants.BASE_URL + AppConstants.UPLOAD_URL + popularProduct.img!,
-            imageBuilder: (context, imageProvider) =>
-            GestureDetector(
-              onTap: () => Get.toNamed(RouteHelper.getPopularFood(index)),
-              child: Container(
+      child: GestureDetector(
+        onTap: () => Get.toNamed(RouteHelper.getPopularFood(index)),
+        child: Stack(
+          children: [
+            CachedNetworkImage(
+              imageUrl: AppConstants.BASE_URL + AppConstants.UPLOAD_URL + popularProduct.img!,
+              imageBuilder: (context, imageProvider) =>
+              Container(
                 height: _heigth,
                 margin: EdgeInsets.only(
                   left: Dimensions.width(10),
@@ -216,38 +216,38 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   ),
                 ),
               ),
+              placeholder: (context, url) => ProgressCircular(height: _heigth),
             ),
-            placeholder: (context, url) => ProgressCircular(height: _heigth),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: Dimensions.height(120),
-              margin: EdgeInsets.only(
-                left: Dimensions.width(30),
-                right: Dimensions.width(30),
-                bottom: Dimensions.height(30),
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.height(30)),
-                color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(color: Color(0xFFE8E8E8), blurRadius: 5.0, offset: Offset(0, 5)),
-                  BoxShadow(color: Colors.white, offset: Offset(5, 0)),
-                  BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
-                ]
-              ),
+            Align(
+              alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.only(
-                  top: Dimensions.height(10),
-                  left: Dimensions.width(15),
-                  right: Dimensions.width(15),
+                height: Dimensions.height(120),
+                margin: EdgeInsets.only(
+                  left: Dimensions.width(30),
+                  right: Dimensions.width(30),
+                  bottom: Dimensions.height(30),
                 ),
-                child: AppColumn(text: popularProduct.name!),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.height(30)),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(color: Color(0xFFE8E8E8), blurRadius: 5.0, offset: Offset(0, 5)),
+                    BoxShadow(color: Colors.white, offset: Offset(5, 0)),
+                    BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
+                  ]
+                ),
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top: Dimensions.height(10),
+                    left: Dimensions.width(15),
+                    right: Dimensions.width(15),
+                  ),
+                  child: AppColumn(text: popularProduct.name!),
+                ),
               ),
-            ),
-          ),       
-        ],
+            ),       
+          ],
+        ),
       ),
     );
   }
