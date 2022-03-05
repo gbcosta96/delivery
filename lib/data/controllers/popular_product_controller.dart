@@ -1,3 +1,4 @@
+import 'package:delivery/data/controllers/cart_controller.dart';
 import 'package:delivery/data/repository/popular_product_repo.dart';
 import 'package:delivery/models/products_model.dart';
 import 'package:delivery/utils/colors.dart';
@@ -11,12 +12,16 @@ class PopularProductController extends GetxController{
 
   List<dynamic> _popularProductList = [];
   List<dynamic> get popularProductList => _popularProductList;
+  late CartController _cart;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
   int _quantity = 0;
-  int get quatity => _quantity;
+  int get quantity => _quantity;
+
+  int _inCartItems = 0;
+  int get inCartItems => _inCartItems + _quantity;
 
 
   Future<void> getPopularProductList() async {
@@ -33,16 +38,12 @@ class PopularProductController extends GetxController{
   }
 
   void setQuantity(bool isIncrement){
-    if(isIncrement){
-      _quantity = checkQuantity(_quantity + 1);
-    }
-    else{
-      _quantity = checkQuantity(_quantity - 1);
-    }
+    _quantity = isIncrement ? checkQuantity(_quantity + 1) : checkQuantity(_quantity - 1);
+    print(_quantity);
     update();
   }
   int checkQuantity(int quantity){
-    if(quantity < 0){
+    if((_inCartItems + quantity) < 0){
       Get.snackbar(
         "Item count", "You can't reduce more!",
         backgroundColor: AppColors.mainColor,
@@ -50,7 +51,7 @@ class PopularProductController extends GetxController{
       );
       return 0;
     }
-    else if(quantity > 20){
+    else if((_inCartItems + quantity) > 20){
       Get.snackbar(
         "Item count", "You can't add more!",
         backgroundColor: AppColors.mainColor,
@@ -60,8 +61,26 @@ class PopularProductController extends GetxController{
     }
     return quantity;
   }
-  void initProduct(){
+  void initProduct(ProductModel product, CartController cart){
     _quantity = 0;
+    _inCartItems = 0;
+    _cart = cart;
+    if(_cart.existInCart(product)){
+      _inCartItems = _cart.getQuantity(product);
+    }
+  }
 
+  void addItem(ProductModel product){
+    _cart.addItem(product, _quantity);
+    _quantity = 0;
+    _inCartItems = _cart.getQuantity(product);
+    _cart.items.forEach((key, value) {
+      print("key $key, quantity ${value.quantity}");
+    });
+    update();
+  }
+
+  int get totalItems{
+    return _cart.totalItems;
   }
 }

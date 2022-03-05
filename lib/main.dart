@@ -5,6 +5,7 @@ import 'package:delivery/data/controllers/popular_product_controller.dart';
 import 'package:delivery/data/controllers/recommended_product_controller.dart';
 import 'package:delivery/pages/home/main_food_page.dart';
 import 'package:delivery/routes/route_helper.dart';
+import 'package:delivery/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
     Get.find<PopularProductController>().getPopularProductList();
     Get.find<RecommendedProductController>().getRecommendedProductList();
     return GetMaterialApp(
-      title: 'Delivery',
+      title: AppConstants.APP_NAME,
       debugShowCheckedModeBanner: false,
       home: const MainFoodPage(),
       initialRoute: RouteHelper.initial,
