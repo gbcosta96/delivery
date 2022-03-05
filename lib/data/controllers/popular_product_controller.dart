@@ -1,5 +1,6 @@
 import 'package:delivery/data/controllers/cart_controller.dart';
 import 'package:delivery/data/repository/popular_product_repo.dart';
+import 'package:delivery/models/cart_model.dart';
 import 'package:delivery/models/products_model.dart';
 import 'package:delivery/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class PopularProductController extends GetxController{
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );
-      return 0;
+      return -_inCartItems;
     }
     else if((_inCartItems + quantity) > 20){
       Get.snackbar(
@@ -57,7 +58,7 @@ class PopularProductController extends GetxController{
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );
-      return 20;
+      return 20 - _inCartItems;
     }
     return quantity;
   }
@@ -82,5 +83,9 @@ class PopularProductController extends GetxController{
 
   int get totalItems{
     return _cart.totalItems;
+  }
+  
+  List<CartModel> get getItems{
+    return _cart.getItems;
   }
 }
