@@ -41,7 +41,11 @@ class RecommendedFoodDetail extends StatelessWidget {
                   return Stack(
                     children: [
                       GestureDetector(
-                        onTap: () => Get.to(() => CartPage()),
+                        onTap: () {
+                          if(controller.totalItems >= 1){
+                            Get.toNamed(RouteHelper.getCartPage());
+                          }
+                        },
                         child: const AppIcon(icon: Icons.shopping_cart_outlined),
                       ),
                       controller.totalItems >= 1 ? 
@@ -203,7 +207,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                         borderRadius: BorderRadius.circular(Dimensions.smallest(20)),
                         color: AppColors.mainColor,
                       ),
-                      child: BigText(text: "\$${product.price! * controller.inCartItems} | Add to cart", color: Colors.white),
+                      child: BigText(text: "\$${product.price!} | Add to cart", color: Colors.white),
                     ),
                   )
                 ],

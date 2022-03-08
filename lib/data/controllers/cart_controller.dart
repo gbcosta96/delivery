@@ -19,6 +19,7 @@ class CartController extends GetxController{
       _items.update(product.id!, (value) {
         value.quantity = value.quantity! + quantity;
         totalQuantity = value.quantity!;
+        value.product = product;
         return value;
       });
 
@@ -35,6 +36,7 @@ class CartController extends GetxController{
         quantity: quantity,
         isExist: true,
         time: DateTime.now().toString(),
+        product: product,
       ));  
     }
     else{
@@ -44,6 +46,7 @@ class CartController extends GetxController{
         colorText: Colors.white,
       );
     }
+    update();
   }
 
   bool existInCart(ProductModel product){
