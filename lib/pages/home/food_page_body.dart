@@ -121,7 +121,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     child: Row(
                       children: [
                         CachedNetworkImage(
-                          imageUrl: AppConstants.BASE_URL + AppConstants.UPLOAD_URL + recommendedProducts.recommendedProductList[index].img!,
+                          imageUrl: /*AppConstants.BASE_URL + AppConstants.UPLOAD_URL +  */ recommendedProducts.recommendedProductList[index].img!,
                           imageBuilder: (context, imageProvider) =>
                           Container(
                             width: Dimensions.smallest(120),
@@ -199,7 +199,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         child: Stack(
           children: [
             CachedNetworkImage(
-              imageUrl: AppConstants.BASE_URL + AppConstants.UPLOAD_URL + popularProduct.img!,
+              imageUrl: /*AppConstants.BASE_URL + AppConstants.UPLOAD_URL + */popularProduct.img!,
               imageBuilder: (context, imageProvider) =>
               Container(
                 height: _heigth,

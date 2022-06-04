@@ -33,7 +33,7 @@ class PopularFoodDetail extends StatelessWidget {
             left: 0,
             right: 0,
             child: CachedNetworkImage(
-              imageUrl: AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
+              imageUrl: /*AppConstants.BASE_URL + AppConstants.UPLOAD_URL + */ product.img!,
               imageBuilder: (context, imageProvider) =>
               Container(
                 width: double.maxFinite,

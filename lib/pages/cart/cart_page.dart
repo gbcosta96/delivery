@@ -92,7 +92,7 @@ class CartPage extends StatelessWidget {
                                   }
                                 },
                                 child: CachedNetworkImage(
-                                  imageUrl: AppConstants.BASE_URL + AppConstants.UPLOAD_URL + cartController.getItems[index].img!,
+                                  /*imageUrl: AppConstants.BASE_URL + AppConstants.UPLOAD_URL + */ cartController.getItems[index].img!,
                                   imageBuilder: (context, imageProvider) =>
                                   Container(
                                     width: Dimensions.width(100),

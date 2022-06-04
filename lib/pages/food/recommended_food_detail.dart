@@ -98,7 +98,7 @@ class RecommendedFoodDetail extends StatelessWidget {
             expandedHeight: Dimensions.height(300),
             flexibleSpace: FlexibleSpaceBar(
               background: CachedNetworkImage(
-                imageUrl: AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
+                imageUrl: /*AppConstants.BASE_URL + AppConstants.UPLOAD_URL + */ product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const CircularProgressIndicator(color: AppColors.mainColor),
